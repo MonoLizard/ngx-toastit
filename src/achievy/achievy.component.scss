@@ -1,0 +1,21 @@
+.achievy{
+    background-color: green;
+    bottom: 10px;
+    color: #fff;
+    height: 75px;
+    position: fixed;
+    right: 10px;
+    width: 200px;
+
+    &--adopted{
+        position: absolute;
+    }
+
+    &__title{
+        font-size: 20px;
+    }
+
+    &__message{
+        font-size: 12px;
+    }
+}
