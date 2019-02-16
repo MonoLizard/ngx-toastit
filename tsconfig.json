@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "strict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "stripInternal": true,
+        "target": "es5"
+    },
+    "angularCompilerOptions": {
+        "genDir": "aot", // Specify where Angular can create temporary AOT files
+        "skipMetadataEmit": true // Don't generate not necessary metadata files. They are useful only if you're publishing an Angular UI library
+    }
+}
