@@ -1,21 +1,116 @@
 .achievy{
-    background-color: green;
-    bottom: 10px;
     color: #fff;
-    height: 75px;
     position: fixed;
-    right: 10px;
-    width: 200px;
+    transform-origin: center center;
+    transition: top 0.15s cubic-bezier(0.4, 0, 0.2, 1), bottom 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 250px;
 
     &--adopted{
         position: absolute;
     }
 
+    &--align-bottom-center,
+    &--align-top-center{
+        left: 50%;
+        transform-origin: left center;
+    }
+
+    &--align-bottom-left,
+    &--align-top-left{
+        left: 10px;
+    }
+
+    &--align-bottom-right,
+    &--align-top-right{
+        right: 10px;
+    }
+
+    &__body{
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px 0px;
+        display: flex;
+        padding: 10px;
+
+        &--align-bottom-center,
+        &--align-top-center{
+            transform: translateX(-50%);
+        }
+    }
+
+    &__icon{
+        border-radius: 100%;
+        height: 32px;
+        line-height: 32px;
+        margin-right: 10px;
+        min-width: 32px;
+        text-align: center;
+
+        &--error{
+            border: 2px solid rgb(219, 96, 58);
+
+            &::after{
+                color: rgb(219, 96, 58);
+                content: "W";
+            }
+        }
+
+        &--info{
+            border: 2px solid rgb(82, 220, 230);
+
+            &::after{
+                color: rgb(82, 220, 230);
+                content: "İ";
+            }
+        }
+
+        &--progress{
+            animation: progress-animation 1s linear infinite;
+            border: 2px solid rgb(221, 235, 36);
+
+            &::after{
+                background-color: rgb(221, 235, 36);
+                border-radius: 100%;
+                content: "";
+                display: block;
+                height: 5px;
+                margin: 5px auto;
+                width: 5px;
+            }
+        }
+
+        &--pin{
+            border: 2px solid rgb(255, 165, 0);
+
+            &::after{
+                color: rgb(255, 165, 0);
+                content: "P";
+            }
+        }
+
+        &--success{
+            border: 2px solid rgb(22, 221, 55);
+
+            &::after{
+                color: rgb(22, 221, 55);
+                content: "S";
+            }
+        }
+    }
+
     &__title{
-        font-size: 20px;
+        font-size: 18px;
+        margin: 0 0 5px;
     }
 
     &__message{
         font-size: 12px;
+        margin: 0;
     }
+}
+
+@keyframes progress-animation{
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

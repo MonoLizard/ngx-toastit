@@ -1,6 +1,7 @@
 export enum AchievyType{
     Error = 'error',
+    Info = 'info',
     Progress = 'progress',
-    Static = 'static',
+    Pin = 'pin',
     Success = 'success',
 }

@@ -1,12 +1,14 @@
 import { Observable } from 'rxjs';
-import { AchievySkin } from './achievy-skin';
+import { AchievyAlign } from './achievy-align';
 import { AchievyType } from './achievy-type';
 
 export interface IAchievy{
+    align?: AchievyAlign;
+    enterAnimation?: any;
     id?: number;
+    leaveAnimation?: any;
     message?: string;
     parent?: string | Element | null;
-    skin?: AchievySkin;
     timeout?: number;
     title: string;
     type?: AchievyType;
