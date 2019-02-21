@@ -10,8 +10,10 @@ module.exports = {
 	    rules: [
             {test: /\.ts$/, exclude: /node_modules/, use: 'ts-loader'},
             {test: /\.html/, exclude: /node_modules/, use: ['to-string-loader', 'html-loader']},
-	        {test: /\.scss$/, exclude: /node_modules/, use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader']}
-	    ]
+            {test: /\.scss$/, exclude: /node_modules/, use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader']},
+            {sideEffects: false}
+        ],
+        
 	},
     output: {
         filename: '[name].bundle.js',
