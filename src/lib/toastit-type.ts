@@ -1,5 +1,5 @@
-export enum AchievyType{
-    Error = 'error',
+export enum ToastitType {
+    Warning = 'warning',
     Info = 'info',
     Progress = 'progress',
     Pin = 'pin',
