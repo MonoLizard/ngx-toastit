@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
-import { AchievyAlign } from './achievy-align';
-import { AchievyType } from './achievy-type';
+import { ToastitAlign } from './toastit-align';
+import { ToastitType } from './toastit-type';
 
-export interface IAchievy{
-    align?: AchievyAlign;
+export interface IToastit {
+    align?: ToastitAlign;
     enterAnimation?: any;
     id?: number;
     leaveAnimation?: any;
@@ -11,6 +11,6 @@ export interface IAchievy{
     parent?: string | Element | null;
     timeout?: number;
     title: string;
-    type?: AchievyType;
+    type?: ToastitType;
     observable?: Observable<any>;
 }

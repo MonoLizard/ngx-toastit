@@ -1,4 +1,4 @@
-export enum AchievyAlign{
+export enum ToastitAlign {
     BC = 'bottom-center',
     BL = 'bottom-left',
     BR = 'bottom-right',
