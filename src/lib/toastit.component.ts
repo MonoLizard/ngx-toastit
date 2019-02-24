@@ -1,7 +1,6 @@
 import { AnimationBuilder } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
-import { ToastitService } from './toastit.service';
 import { IToastit } from './itoastit';
 import { ToastitType } from './toastit-type';
 
@@ -13,13 +12,15 @@ import { ToastitType } from './toastit-type';
     templateUrl: './toastit.component.html',
 })
 export class ToastitComponent implements OnDestroy, OnInit, AfterViewInit {
+    @Output() animationDone = new EventEmitter();  
+    @ViewChild('elementRef') private elementRef?: ElementRef;
+
     public options?: IToastit;
     public viewHeight = 0;
     private timerSubscription?: Subscription;
     private progressSubscription?: Subscription;
-    @ViewChild('elementRef') private elementRef?: ElementRef;
 
-    constructor(private toastitService: ToastitService, private builder: AnimationBuilder) { }
+    constructor(private builder: AnimationBuilder) { }
 
     public ngOnDestroy(): void {
         if (this.timerSubscription) {
@@ -61,7 +62,7 @@ export class ToastitComponent implements OnDestroy, OnInit, AfterViewInit {
         player.play();
         player.onDone(() => {
             player.destroy();
-            this.toastitService.remove(this.options.id);
+            this.animationDone.emit();
         });
     }
 }

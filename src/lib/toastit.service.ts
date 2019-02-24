@@ -1,20 +1,18 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef,
-  EmbeddedViewRef, Injectable, Injector } from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector } from '@angular/core';
 import { ToastitComponent } from './toastit.component';
 import { IToastit } from './itoastit';
 import { ToastitAlign } from './toastit-align';
-import { fadeIn, fadeOut } from './animations';
 import { ToastitType } from './toastit-type';
+import { fadeIn, fadeOut } from './toastit-animation';
 
 @Injectable({providedIn: 'root'})
 export class ToastitService {
     private list: {[key: number]: [ComponentRef<ToastitComponent>, Element, string]};
     private uid: number;
-    public constructor(private factoryResolver: ComponentFactoryResolver, private appRef: ApplicationRef,
-                       private injector: Injector) {
-                            this.list = {};
-                            this.uid = 0;
-                       }
+    public constructor(private factoryResolver: ComponentFactoryResolver, private appRef: ApplicationRef, private injector: Injector) {
+        this.list = {};
+        this.uid = 0;
+    }
 
     public add(options: IToastit): number {
         options = {
@@ -24,7 +22,8 @@ export class ToastitService {
         };
 
         const componentRef = this.factoryResolver.resolveComponentFactory(ToastitComponent).create(this.injector);
-        componentRef.instance.options = options;
+        const instance = componentRef.instance;
+        instance.options = options;
         this.appRef.attachView(componentRef.hostView);
         const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
@@ -48,6 +47,7 @@ export class ToastitService {
         } else {
             (domElem.firstChild as HTMLElement).style.top = 'calc(50% - ' + position + ')';
         }
+        instance.animationDone.subscribe(success => this.remove(instance.options.id));
 
         this.list[this.uid] = [componentRef, parent, anchor];
         this.uid++;

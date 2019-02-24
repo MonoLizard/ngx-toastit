@@ -62,12 +62,9 @@
             border: 2px solid rgb(255, 165, 0);
 
             &::after{
-                background-image: url(https://via.placeholder.com/32);
-                border-radius: 100%;
-                content: "";
-                display: inline-block;
-                height: 32px;
-                width: 32px;
+                color: rgb(255, 165, 0);
+                content: "P";
+                font-size: 25px;
             }
         }
 
