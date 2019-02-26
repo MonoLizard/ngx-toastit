@@ -2,10 +2,10 @@
   "name": "ngx-toastit",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0",
-    "@angular/animations": "^7.2.0",
-    "@angular/platform-browser/animations": "^7.2.0",
-    "rxjs": "^6.4.0"
+    "@angular/common": "^6.0.0 || ^7.0.0",
+    "@angular/core": "^6.0.0 || ^7.0.0",
+    "@angular/animations": "^6.0.0 || ^7.0.0",
+    "@angular/platform-browser/animations": "^6.0.0 || ^7.0.0",
+    "rxjs": "^6.0.0"
   }
 }

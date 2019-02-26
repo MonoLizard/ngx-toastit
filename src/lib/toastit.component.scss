@@ -109,6 +109,7 @@
         font-size: 12px;
         font-weight: bold;
         margin: 0;
+        word-break: break-word;
     }
 
     &__message{
@@ -116,6 +117,7 @@
         font-size: 12px;
         margin: 0;
         font-weight: normal;
+        word-break: break-word;
     }
 }
 

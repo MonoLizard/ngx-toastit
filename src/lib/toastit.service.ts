@@ -3,7 +3,7 @@ import { ToastitComponent } from './toastit.component';
 import { IToastit } from './itoastit';
 import { ToastitAlign } from './toastit-align';
 import { ToastitType } from './toastit-type';
-import { fadeIn, fadeOut } from './toastit-animation';
+import { ToastitAnimation } from './toastit-animation';
 
 @Injectable({providedIn: 'root'})
 export class ToastitService {
@@ -16,8 +16,8 @@ export class ToastitService {
 
     public add(options: IToastit): number {
         options = {
-            ...options, align: options.align || ToastitAlign.TR, enterAnimation: options.enterAnimation || fadeIn,
-            id: this.uid, leaveAnimation: options.leaveAnimation || fadeOut, timeout: options.timeout || 5,
+            ...options, align: options.align || ToastitAlign.TR, enterAnimation: options.enterAnimation || ToastitAnimation.fadeIn,
+            id: this.uid, leaveAnimation: options.leaveAnimation || ToastitAnimation.fadeOut, timeout: options.timeout || 5,
             type: options.type || ToastitType.Info,
         };
 
@@ -39,17 +39,15 @@ export class ToastitService {
         parent.appendChild(domElem);
 
         const anchor: string = this.getAlignAnchor(options.align);
-        const position = this.getNextPositionInParent(parent, anchor);
+        const position = this.getNextPositionInParent(parent, options.align);
         if (anchor === 'top') {
             (domElem.firstChild as HTMLElement).style.top = position;
         } else if (anchor === 'bottom') {
             (domElem.firstChild as HTMLElement).style.bottom = position;
-        } else {
-            (domElem.firstChild as HTMLElement).style.top = 'calc(50% - ' + position + ')';
         }
         instance.animationDone.subscribe(success => this.remove(instance.options.id));
 
-        this.list[this.uid] = [componentRef, parent, anchor];
+        this.list[this.uid] = [componentRef, parent, options.align];
         this.uid++;
         return options.id;
     }
@@ -76,7 +74,7 @@ export class ToastitService {
     }
 
     private getNextPositionInParent(parent: Element, anchor: string): string {
-        let pos: number = anchor === 'center' ? 0 : 10;
+        let pos: number = 10;
         for (const id of Object.keys(this.list)) {
             const value = this.list[id as unknown as number];
             if (value[1] === parent && value[2] === anchor) { pos += value[0].instance.viewHeight + 5; }
@@ -85,17 +83,17 @@ export class ToastitService {
     }
 
     private relayout(parent: Element, anchor: string) {
-        let pos: number = anchor === 'center' ? 0 : 10;
+        let pos: number = 10;
         for (const id of Object.keys(this.list)) {
             const value = this.list[id as unknown as number];
             if (value[1] === parent && value[2] === anchor) {
                 const componentRef = value[0];
                 const domElement = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-                if (anchor === 'top') {
+                if (this.getAlignAnchor(anchor as ToastitAlign) === 'top') {
                     (domElement.firstChild as HTMLElement).style.top = pos + 'px';
-                } else if (anchor === 'bottom') {
+                } else if (this.getAlignAnchor(anchor as ToastitAlign) === 'bottom') {
                     (domElement.firstChild as HTMLElement).style.bottom = pos + 'px';
-                } else { (domElement.firstChild as HTMLElement).style.top = 'calc(50% - ' + pos + 'px)'; }
+                }
                 pos += componentRef.instance.viewHeight + 5;
             }
         }
