@@ -2,12 +2,12 @@
 An unobtrusive toast module for Angular. [Demo](https://monolizard.github.io/ngx-toastit/)
 
 ## Usage
----
+
 - Install toastit
 ```bash
 npm i -S ngx-toastit
 ```
-Also install peer dependencies if you're missing them.
+- Also install peer dependencies if you're missing them.
 - Add ToastitModule to your project
 ```ts
 @NgModule({
@@ -27,7 +27,7 @@ public AddToastit(){
 ```
 
 ## Options
----
+
 ### Required
 ```ts
 title: string = ''
@@ -38,6 +38,8 @@ Toastit title.
 align: ToastitAlign = ToastitAlign.TR
 ```
 The point where the toastit will appear. Default value is top right.
+
+
 | type | info |
 | ---- | ---- |
 | `ToastitAlign.TR` | Top right |
@@ -46,10 +48,14 @@ The point where the toastit will appear. Default value is top right.
 | `ToastitAlign.BR` | Bottom right |
 | `ToastitAlign.BC` | Bottom center |
 | `ToastitAlign.BL` | Bottom left |
+
+---
 ```ts
 enterAnimation: any = ToastitAnimation.fadeIn
 ```
 Animation config for entering toastits. Animations use material design motion for its easings and timings. Check the [demo](https://monolizard.github.io/ngx-toastit/) page for visualization.
+
+
 | type |
 | ---- |
 | `ToastitAnimation.fadeIn` |
@@ -59,10 +65,14 @@ Animation config for entering toastits. Animations use material design motion fo
 | `ToastitAnimation.slideInTop` |
 | `ToastitAnimation.slideInBottom` |
 | `ToastitAnimation.scaleIn` |
+
+---
 ```ts
 leaveAnimation: any = ToastitAnimation.fadeOut
 ```
 Animation config for exiting toastits. Animations use material design motion for its easings and timings. Check the [demo](https://monolizard.github.io/ngx-toastit/) page for visualization.
+
+
 | type |
 | ---- |
 | `ToastitAnimation.fadeOut` |
@@ -72,18 +82,26 @@ Animation config for exiting toastits. Animations use material design motion for
 | `ToastitAnimation.slideOutTop` |
 | `ToastitAnimation.slideOutBottom` |
 | `ToastitAnimation.scaleOut` |
+
+---
 ```ts
 parent: string | Element = 'body'
 ```
 Toasit parent, could be a selector string or Element.
+
+---
 ```ts
 timeout: number = 5
 ```
 Toastit will wait x seconds before exiting.
+
+---
 ```ts
 type: ToastitType = ToastitType.Info
 ```
 Toastit type.
+
+
 | type | info |
 | ---- | ---- |
 | `ToastitType.Info` | Used for info messages |
@@ -91,17 +109,22 @@ Toastit type.
 | `ToastitType.Progress` | Progress toastit, used in conjunction with observables, has an animation icon |
 | `ToastitType.Success` | Used for success messages |
 | `ToastitType.Warning` | Used to show error messages |
+
+---
 ```ts
 message: string = ''
 ```
 Toastit message.
+
+---
 ```ts
 observable: Observable<any> = undefined
 ```
 If an observable is supplied, toastit will subscribe to it and exit after the observable is finished. 
 ## Styling
----
 Toastit uses BEM notation for its classes and `ViewEncapsulation.NONE` in Angular so its styles can be customized in global scope with ease.
+
+
 | class | info |
 | ----- | ---- |
 | `.toastit` | Main toastit class |
