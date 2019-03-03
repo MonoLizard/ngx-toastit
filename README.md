@@ -2,7 +2,7 @@
 An unobtrusive toast module for Angular. [Demo](https://monolizard.github.io/ngx-toastit/)
 
 
-![npm](https://img.shields.io/npm/v/ngx-toastit.svg)
+[![npm-badge](https://img.shields.io/npm/v/ngx-toastit.svg)](https://www.npmjs.com/package/ngx-toastit)
 ## Usage
 
 - Install toastit
