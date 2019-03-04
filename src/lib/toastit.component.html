@@ -1,9 +1,0 @@
-<div #elementRef class="toastit toastit--{{options.type}} toastit--align-{{options.align}}" [class.toastit--adopted]="options.parent">
-    <div class="toastit__body toastit__body--align-{{options.align}}">
-        <span class="toastit__icon toastit__icon--{{options.type}}"></span>
-        <div class="toastit__content">
-            <p class="toastit__title toastit__title--{{options.type}}">{{options.title}}</p>
-            <p *ngIf="options.message" class="toastit__message toastit__message--{{options.type}}">{{options.message}}</p>
-        </div>
-    </div>
-</div>
