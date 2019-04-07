@@ -109,14 +109,16 @@
         font-size: 12px;
         font-weight: bold;
         margin: 0;
+        overflow: hidden;
         word-break: break-word;
     }
 
     &__message{
         color: #252525;
         font-size: 12px;
-        margin: 0;
         font-weight: normal;
+        margin: 0;
+        overflow: hidden;
         word-break: break-word;
     }
 }
