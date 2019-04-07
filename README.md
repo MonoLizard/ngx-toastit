@@ -27,7 +27,25 @@ public AddToastit(){
     this.toastitService.add(options: IToastit);
 }
 ```
+## Methods
+```ts
+ToastitService.add(options: IToastit): number
+```
+Adds a toastit with the supplied options (Refer to options section for posible values).
+Returns added toastit id, you can use this for premature removing.
 
+---
+```ts
+ToastitService.remove(id: number): void
+```
+Removes a toastit with the supplied id. This method will play exit animation.
+If a toastit is not found with this id, method will fail silently and will print a warning  to console.
+
+---
+```ts
+ToastitService.removeAll(): number
+```
+Removes all toastits from screen. This method will not play exit animations.
 ## Options
 
 ### Required
