@@ -53,6 +53,10 @@ export class ToastitService {
     }
 
     public remove(id: number) {
+        if (!this.list[id]) {
+            console.warn(`Toastit with id ${id} is already removed.`);
+            return;
+        }
         const componentRef: ComponentRef<ToastitComponent> = this.list[id][0];
         const parent: Element = this.list[id][1];
         const anchor = this.list[id][2];
