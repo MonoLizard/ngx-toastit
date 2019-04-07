@@ -46,6 +46,12 @@ export class ToastitComponent implements OnDestroy, OnInit, AfterViewInit {
 
     public ngAfterViewInit() {
         this.viewHeight = this.elementRef.nativeElement.clientHeight;
+        const titleElement = this.elementRef.nativeElement.querySelector('.toastit__title');
+        const messageElement = this.elementRef.nativeElement.querySelector('.toastit__message');
+        const titleHeight = titleElement.clientHeight;
+        const messageHeight = messageElement.clientHeight;
+        titleElement.style['max-height'] = titleHeight + 'px';
+        messageElement.style['max-height'] = messageHeight + 'px';
         this.animateIn();
     }
 
